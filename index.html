@@ -1,320 +1,108 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Congregational Church Of All Nations — Founder:Ndivho Brandon Tshikota</title>
-  <meta name="description" content="Faith-based ministry founded by Ndivho Brandon Tshikota after his early calling to serve the Lord in 1984. Directors include Murunwa Mashamba (Wife)." />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <title>Congregational Church Of All Nations — Founder: Ndivho Brandon Tshikota</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <style>
-    :root{
-      --bg: #0b1020;
-      --card: #121832;
-      --ink: #e9eefc;
-      --muted: #b8c1ec;
-      --accent: #7aa2ff;
-      --accent-2: #9cffd0;
-      --ring: rgba(122,162,255,.45);
-      --shadow: 0 10px 30px rgba(0,0,0,.35);
-    }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{
-      margin:0;
-      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, sans-serif;
-      color:var(--ink);
-      background: radial-gradient(1200px 800px at 10% -10%, #1a2250 0%, #0b1020 50%, #070a16 100%);
-      line-height:1.6;
-    }
-    a{color:var(--accent);text-decoration:none}
-    a:hover{text-decoration:underline}
-    .container{max-width:1100px;margin-inline:auto;padding:24px}
-    header{
-      position:sticky;top:0;z-index:10;
-      backdrop-filter: blur(8px);
-      background: rgba(11,16,32,.55);
-      border-bottom: 1px solid rgba(255,255,255,.06);
-    }
-    .nav{display:flex;gap:16px;align-items:center;justify-content:space-between}
-    .brand{display:flex;gap:12px;align-items:center}
-    .logo{
-      width:40px;height:40px;border-radius:12px;
-      background: linear-gradient(135deg, var(--accent), var(--accent-2));
-      box-shadow: var(--shadow);
-    }
-    .brand h1{font-size:18px;margin:0;font-weight:800;letter-spacing:.3px}
-    .nav a{opacity:.9}
-    .btn{
-      display:inline-block;padding:12px 18px;border-radius:14px;font-weight:700;
-      background:linear-gradient(135deg,var(--accent),#5b86ff);
-      color:#06102a;border:none;box-shadow: var(--shadow);
-    }
-    .btn:hover{filter:brightness(1.05);text-decoration:none}
-
-    /* Hero */
-    .hero{padding:64px 0 40px;position:relative;overflow:hidden}
-    .hero-grid{display:grid;grid-template-columns:1.2fr .8fr;gap:28px;align-items:center}
-    .hero h2{font-size:42px;line-height:1.1;margin:0 0 14px;font-weight:800}
-    .hero p{font-size:18px;color:var(--muted);margin:0 0 22px}
-    .badge{display:inline-flex;gap:8px;align-items:center;padding:8px 12px;border:1px solid rgba(255,255,255,.15);border-radius:999px;color:var(--muted);font-size:13px}
-    .card{
-      background:linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
-      border:1px solid rgba(255,255,255,.08);
-      border-radius:22px;padding:22px;box-shadow: var(--shadow);
-    }
-    .hero .card{min-height:220px}
-
-    /* Sections */
-    section{padding:28px 0}
+    body {margin:0; font-family:Inter,sans-serif; background:#0b1020; color:#e9eefc;}
+    .container{max-width:1100px;margin:auto;padding:24px}
+    .card{background:#121832;border-radius:14px;padding:16px}
     h3{margin:0 0 12px;font-size:24px}
-    .grid{display:grid;gap:18px}
-    .grid.two{grid-template-columns:repeat(2,1fr)}
-    .grid.three{grid-template-columns:repeat(3,1fr)}
 
-    /* Timeline */
-    .timeline{position:relative;padding-left:14px}
-    .timeline:before{content:"";position:absolute;left:4px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--accent),transparent)}
-    .t-item{position:relative;padding-left:16px;margin:10px 0}
-    .t-item:before{content:"";position:absolute;left:-2px;top:9px;width:10px;height:10px;border-radius:50%;background:var(--accent);box-shadow:0 0 0 3px rgba(122,162,255,.2)}
-    .t-item h4{margin:0 0 4px}
-    .muted{color:var(--muted)}
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+    .gallery-grid img{width:100%;border-radius:12px;cursor:pointer}
+    @media(max-width:992px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
+    @media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
 
-    /* Footer */
-    footer{margin-top:32px;padding:24px 0;border-top:1px solid rgba(255,255,255,.08);color:var(--muted)}
-
-    /* Responsive */
-    @media (max-width: 860px){
-      .hero-grid{grid-template-columns:1fr}
-      .grid.two{grid-template-columns:1fr}
-      .grid.three{grid-template-columns:1fr}
-      .hero h2{font-size:34px}
-    }
+    /* Lightbox */
+    #lightbox{display:none;position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;
+      background:rgba(0,0,0,0.9);justify-content:center;align-items:center;flex-direction:row;text-align:center}
+    .lightbox-content{max-width:90%;max-height:85%}
+    #lightbox img{max-width:100%;max-height:75vh;border-radius:16px}
+    #lightbox-caption{margin-top:12px;font-size:1rem;color:#f1f1f1}
+    #lightbox #close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer}
+    #lightbox #prev,#lightbox #next{cursor:pointer;position:absolute;top:50%;font-size:60px;color:white;
+      padding:10px;user-select:none;transform:translateY(-50%)}
+    #lightbox #prev{left:30px} #lightbox #next{right:30px}
   </style>
 </head>
 <body>
-  <header>
-    <div class="container nav">
-      <div class="brand">
-        <div class="logo" aria-hidden="true"></div>
-        <h1>Congregational Church Of All Nations</h1>
-      </div>
-      <nav aria-label="Main navigation" style="display:flex;gap:16px;flex-wrap:wrap">
-        <a href="#about">About</a>
-        <a href="#founder">Founder</a>
-        <a href="#directors">Directors</a>
-        <a href="#ministries">Ministries</a>
-        <a href="#contact" class="btn">Contact</a>
-      </nav>
-    </div>
-  </header>
-
-  <main>
-    <!-- Hero -->
-    <section class="hero">
-      <div class="container hero-grid">
-        <div>
-          <span class="badge" role="note">Established on a calling — 1983</span>
-          <h2>"Called to Serve" — A Ministry Founded by <span style="background:linear-gradient(90deg,var(--accent),var(--accent-2));-webkit-background-clip:text;background-clip:text;color:transparent">Ndivho Brandon 
-		  
-		  Tshikota</span></h2>
-          <p>
-            After recognizing a calling at an early age to serve the Lord in <strong>1983</strong>,
-            Ndivho Brandon Tshikota began a journey of faith, compassion, and discipleship.
-            Today, Congregational Church Of All Nations continues that mission: preaching Christ,
-            equipping believers, and serving communities.
-          </p>
-          <div style="display:flex;gap:12px;flex-wrap:wrap">
-            <a class="btn" href="#visit">Plan a Visit</a>
-            <a class="btn" style="background:linear-gradient(135deg,var(--accent-2),#7bffc0)" href="#give">Give / Partner</a>
-          </div>
-        </div>
-        <div class="card" aria-label="Scripture of the Day">
-          <h3 style="margin-top:0">Scripture of the Day</h3>
-          <p class="muted" id="verse">“Go ye therefore, and teach all Nations , baptizing them in the name Of the Father, and of the Son, and of the Holy spirit.” — Matthew 28:19</p>
-          <small class="muted">(You can replace this with any rotating daily scripture.)</small>
-        </div>
-      </div>
-    </section>
-
-    <!-- About -->
-    <section id="about">
-      <div class="container grid two">
-        <div class="card">
-          <h3>Our Mission</h3>
-          <p class="muted">
-            To proclaim the Gospel of Jesus Christ, raise disciples with strong biblical foundations,
-            and demonstrate the love of God through outreach, teaching, and compassionate service.
-          </p>
-          <ul>
-            <li>Evangelism & Discipleship</li>
-            <li>Prayer & Intercession</li>
-            <li>Community Outreach & Caring</li>
-            <li>Youth & Family Ministry</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Vision</h3>
-          <p class="muted">
-            A Christ-centered movement where people encounter God, grow in the Word, and impact
-            nations with the power of the Holy Spirit.
-          </p>
-          <div class="timeline" aria-label="Key Milestones">
-            <div class="t-item">
-              <h4>1983 — Early Calling</h4>
-              <p class="muted">Brandon recognizes God’s call to serve the Lord from an early age.</p>
-            </div>
-            <div class="t-item">
-              <h4>Founding Years</h4>
-              <p class="muted">Seeds of the ministry take root through home fellowships and outreach.</p>
-            </div>
-            <div class="t-item">
-              <h4>Present Day</h4>
-              <p class="muted">The work continues through preaching, teaching, and community service.</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Founder -->
-    <section id="founder">
-      <div class="container grid two">
-        <div class="card">
-          <h3>Founder — Ndivho Brandon Tshikota</h3>
-          <p class="muted">
-           Ndivho Brandon Tshikota, moved by a divine calling in <strong>1983 through a Vision, I saw myself been lifted up in the spirit, My feet were nolonger on the ground, as I was floating in the spirit, I saw our saviour, His arms were open while looking at me, he was wearing a blue shinning rope, I then asked, Can I come where you are? He said YES, His voice was loud than a sound of many water.I then went back, He was lifted up and I could'nt see him anymore, I find myself back on the ground, Because of my age I didn'nt know that was a call until
- </strong>,
-            established this ministry to serve with humility and truth. His heartbeat is to see souls saved,
-            believers equipped, and communities transformed by the Gospel.
-          </p>
-          <p class="muted">
-            He continues to lead by example — teaching the Word, mentoring leaders, and fostering unity in the Body of Christ.
-          </p>
-        </div>
-        <figure class="card" style="text-align:center">
-          <img src="https://picsum.photos/seed/founder/640/420" alt="Portrait placeholder for Ndivho Brandon Tshikota" style="width:100%;border-radius:14px;display:block;" />
-          <figcaption class="muted">(Replace with founder’s photo.)</figcaption>
+  <div class="container">
+    <div class="card">
+      <h3>Gallery</h3>
+      <div class="gallery-grid">
+        <figure class="card">
+          <img src="Brandon with Prophet Makananise.jpg" alt="Brandon Tshikota with Prophet Makananise" class="gallery-img"/>
+          <figcaption class="muted">With Prophet Makananise</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="Brendon Tshikota.jpg" alt="Pastor Brendon Tshikota in a suit" class="gallery-img"/>
+          <figcaption class="muted">Pastor Ndivho Brandon Tshikota</figcaption>
+        </figure>
+        <figure class="card">
+          <img src="Brendon wife and Kids.jpg" alt="Brendon's wife and kids during celebration" class="gallery-img"/>
+          <figcaption class="muted">Murunwa Mashamba (Wife) with children</figcaption>
         </figure>
       </div>
-    </section>
+    </div>
+  </div>
 
-    <!-- Directors -->
-    <section id="directors">
-      <div class="container">
-        <div class="card">
-          <h3>Directors of the Ministry</h3>
-          <div class="grid three" style="margin-top:10px">
-            <article class="card">
-              <h4 style="margin:0 0 6px">Ndivho Brandon Tshikota</h4>
-              <p class="muted">Founder & Lead Pastor</p>
-              <p class="muted">Provides spiritual oversight, vision, and teaching.</p>
-            </article>
-            <article class="card">
-              <h4 style="margin:0 0 6px">Murunwa Mashamba</h4>
-              <p class="muted">Director — Administration & Family Ministry</p>
-              <p class="muted">(Wife) Supports strategic planning, pastoral care, and women & family initiatives.</p>
-            </article>
-            <article class="card">
-              <h4 style="margin:0 0 6px">Executive Board</h4>
-              <p class="muted">Advisory & Stewardship</p>
-              <p class="muted">Elders and ministry leads offering counsel, accountability, and governance.</p>
-            </article>
-          </div>
-        </div>
-      </div>
-    </section>
+  <!-- Lightbox -->
+  <div id="lightbox">
+    <span id="close">&times;</span>
+    <span id="prev">&#10094;</span>
+    <div class="lightbox-content">
+      <img id="lightbox-img" src="" alt="Expanded view">
+      <p id="lightbox-caption"></p>
+    </div>
+    <span id="next">&#10095;</span>
+  </div>
 
-    <!-- Ministries -->
-    <section id="ministries">
-      <div class="container grid two">
-        <div class="card">
-          <h3>Ministry Areas</h3>
-          <ul>
-            <li>Sunday Services & Bible Teaching</li>
-            <li>Prayer & Intercession Gatherings</li>
-            <li>Youth & Young Adults</li>
-            <li>Outreach & Missions</li>
-            <li>Compassion / Care (Food & Relief)</li>
-          </ul>
-        </div>
-        <div class="card">
-          <h3>Service Times & Location</h3>
-          <ul>
-            <li>Sunday: 09:00 – Celebration Service</li>
-            <li>Wednesday: 18:00 – Prayer & Word</li>
-            <li>Friday: 17:30 – Youth Gathering</li>
-          </ul>
-          <p class="muted">Location: Tshikumbu Village, Stand no : Tshiko-C-001,South Africa,Limpopo, Venda</p>
+<script>
+  const lightbox=document.getElementById('lightbox');
+  const lightboxImg=document.getElementById('lightbox-img');
+  const lightboxCaption=document.getElementById('lightbox-caption');
+  const closeBtn=document.getElementById('close');
+  const prevBtn=document.getElementById('prev');
+  const nextBtn=document.getElementById('next');
 
-          <!-- WhatsApp Contact -->
-          <p class="muted" style="margin-top:12px;">
-            Need directions or more info? Contact us on WhatsApp: 
-            <a href="https://wa.me/27728641973" target="_blank" class="btn" style="padding:8px 14px;">Chat on WhatsApp</a>
-          </p>
+  let images=[]; let captions=[]; let currentIndex=0;
 
-          <!-- Google Maps Embed -->
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.456982932957!2d30.773456315061733!3d-23.04312328493962!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x1e7f7c7f7f7f7f7f%3A0xabcdef1234567890!2sTshikumbu Village, Stand no Tshiko-C-001%2C%20Limpopo%2C%20South%20Africa!5e0!3m2!1sen!2sza!4v1692959234567!5m2!1sen!2sza" 
-            width="100%" 
-            height="250" 
-            style="border:0;border-radius:12px;margin-top:10px;" 
-            allowfullscreen="" 
-            loading="lazy" 
-            referrerpolicy="no-referrer-when-downgrade">
-          </iframe>
-        </div>
-      </div>
-    </section>
+  document.querySelectorAll('.gallery-img').forEach((img,index)=>{
+    images.push(img);
+    const caption=img.closest('figure').querySelector('figcaption')?.innerText||"";
+    captions.push(caption);
+    img.addEventListener('click',()=>{currentIndex=index;showImage();lightbox.style.display='flex'});
+  });
 
-    <!-- Visit / Give / Contact -->
-    <section id="visit">
-      <div class="container grid two">
-        <div class="card">
-          <h3>Plan a Visit</h3>
-          <p class="muted">Let us know when you’d like to join a service. Our team would love to welcome you.</p>
-          <a class="btn" href="#contact">I’m Coming This Sunday</a>
-        </div>
-        <div class="card" id="give">
-          <h3>Give / Partner</h3>
-          <p class="muted">Partner with us through prayer and generosity as we reach more people with the Gospel.</p>
-          <ul>
-            <li>Bank: (Replace with bank name)</li>
-            <li>Account: (Replace with account number)</li>
-            <li>Reference: <em>Offering / Tithe / Building Fund</em></li>
-          </ul>
-        </div>
-      </div>
-    </section>
+  function showImage(){lightboxImg.src=images[currentIndex].src;lightboxCaption.textContent=captions[currentIndex];}
 
-    <section id="contact">
-      <div class="container grid two">
-        <div class="card">
-          <h3>Contact Us</h3>
-          <form id="contactForm" aria-label="Contact form" onsubmit="return handleSubmit(event)">
-            <label for="name">Full Name</label>
-            <input id="name" name="name" type="text" required placeholder="Your name" style="width:100%;padding:12px;margin:6px 0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0e1430;color:var(--ink)" />
+  prevBtn.addEventListener('click',()=>{currentIndex=(currentIndex-1+images.length)%images.length;showImage()});
+  nextBtn.addEventListener('click',()=>{currentIndex=(currentIndex+1)%images.length;showImage()});
+  closeBtn.addEventListener('click',()=>lightbox.style.display='none');
+  lightbox.addEventListener('click',(e)=>{if(e.target===lightbox)lightbox.style.display='none'});
 
-            <label for="email">Email</label>
-            <input id="email" name="email" type="email" required placeholder="you@example.com" style="width:100%;padding:12px;margin:6px 0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0e1430;color:var(--ink)" />
+  document.addEventListener('keydown',(e)=>{
+    if(lightbox.style.display==='flex'){
+      if(e.key==='ArrowRight')nextBtn.click();
+      if(e.key==='ArrowLeft')prevBtn.click();
+      if(e.key==='Escape')closeBtn.click();
+    }
+  });
 
-            <label for="message">Message</label>
-            <textarea id="message" name="message" rows="5" required placeholder="How can we pray with you?" style="width:100%;padding:12px;margin:6px 0 14px;border-radius:12px;border:1px solid rgba(255,255,255,.15);background:#0e1430;color:var(--ink)"></textarea>
-
-            <button class="btn" type="submit">Send Message</button>
-            <p id="formStatus" class="muted" role="status" style="margin-top:10px"></p>
-          </form>
-
-          <!-- WhatsApp Contact -->
-          <p class="muted" style="margin-top:16px;">
-            Or reach us directly via WhatsApp: 
-            <a href="https://wa.me/27728641973" target="_blank" class="btn" style="padding:8px 14px;">Chat on WhatsApp</a>
-          </p>
-        </div>
-        <div class="card">
-          <h3>Find Us</h3>
-          <p class="muted">Visit our church in Tshikumbu Village, Limpopo, Venda.</p>
-          <!-- Google Maps Embed -->
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3531.456982932957!2
+  // Swipe support
+  let startX=0,endX=0;
+  lightbox.addEventListener('touchstart',(e)=>{startX=e.changedTouches[0].screenX;});
+  lightbox.addEventListener('touchend',(e)=>{endX=e.changedTouches[0].screenX;handleSwipe();});
+  function handleSwipe(){
+    const dist=endX-startX;
+    if(Math.abs(dist)>50){
+      if(dist<0){nextBtn.click();}else{prevBtn.click();}
+    }
+  }
+</script>
+</body>
+</html>
