@@ -1,108 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Congregational Church Of All Nations — Founder: Ndivho Brandon Tshikota</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Congregational Church of Nations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
   <style>
-    body {margin:0; font-family:Inter,sans-serif; background:#0b1020; color:#e9eefc;}
-    .container{max-width:1100px;margin:auto;padding:24px}
-    .card{background:#121832;border-radius:14px;padding:16px}
-    h3{margin:0 0 12px;font-size:24px}
-
-    /* Gallery */
-    .gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .gallery-grid img{width:100%;border-radius:12px;cursor:pointer}
-    @media(max-width:992px){.gallery-grid{grid-template-columns:repeat(2,1fr)}}
-    @media(max-width:600px){.gallery-grid{grid-template-columns:1fr}}
-
-    /* Lightbox */
-    #lightbox{display:none;position:fixed;z-index:9999;top:0;left:0;width:100%;height:100%;
-      background:rgba(0,0,0,0.9);justify-content:center;align-items:center;flex-direction:row;text-align:center}
-    .lightbox-content{max-width:90%;max-height:85%}
-    #lightbox img{max-width:100%;max-height:75vh;border-radius:16px}
-    #lightbox-caption{margin-top:12px;font-size:1rem;color:#f1f1f1}
-    #lightbox #close{position:absolute;top:20px;right:30px;font-size:40px;color:#fff;cursor:pointer}
-    #lightbox #prev,#lightbox #next{cursor:pointer;position:absolute;top:50%;font-size:60px;color:white;
-      padding:10px;user-select:none;transform:translateY(-50%)}
-    #lightbox #prev{left:30px} #lightbox #next{right:30px}
+    body { font-family: 'Poppins', sans-serif; margin:0; background:#f6f6f6; color:#222; }
+    nav { background:#002147; color:white; padding:10px 20px; display:flex; justify-content:space-between; align-items:center; }
+    nav a { color:white; text-decoration:none; margin:0 10px; }
+    .container { width:90%; max-width:1100px; margin:auto; }
+    .grid.three { display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:20px; }
+    .card { background:white; border-radius:10px; box-shadow:0 2px 6px rgba(0,0,0,0.1); padding:20px; }
+    img { max-width:100%; border-radius:10px; }
+    h3 { color:#002147; }
+    footer { text-align:center; padding:20px; background:#002147; color:white; margin-top:30px; }
+    /* Lightbox styles */
+    #lightbox { display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); align-items:center; justify-content:center; z-index:1000; }
+    #lightbox img { max-width:90%; max-height:90%; border-radius:12px; }
   </style>
 </head>
 <body>
-  <div class="container">
+  <nav>
+    <div><strong>Congregational Church of Nations</strong></div>
+    <div>
+      <a href="#home">Home</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#visit">Plan a Visit</a>
+    </div>
+  </nav>
+
+  <section id="home" class="container" style="margin-top:20px;">
+    <div class="card">
+      <h3>Our Founder</h3>
+      <img src="images/brendan-prophet-dion.jpg" alt="Founder Brendan and Prophet Dion">
+      <p>Welcome to the Congregational Church of Nations — a home of faith, unity, and hope.</p>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section id="gallery" class="container" style="margin-top:30px;">
     <div class="card">
       <h3>Gallery</h3>
-      <div class="gallery-grid">
-        <figure class="card">
-          <img src="Brandon with Prophet Makananise.jpg" alt="Brandon Tshikota with Prophet Makananise" class="gallery-img"/>
-          <figcaption class="muted">With Prophet Makananise</figcaption>
+      <p class="muted">Moments from our ministry, fellowship, and community gatherings.</p>
+      <div class="grid three" style="margin-top:16px">
+        <figure class="card" style="padding:10px;text-align:center;">
+          <img src="images/brandon.jpg" alt="Brandon" class="gallery-img" />
+          <figcaption class="muted" style="margin-top:6px;">Brandon and team</figcaption>
         </figure>
-        <figure class="card">
-          <img src="Brendon Tshikota.jpg" alt="Pastor Brendon Tshikota in a suit" class="gallery-img"/>
-          <figcaption class="muted">Pastor Ndivho Brandon Tshikota</figcaption>
+
+        <figure class="card" style="padding:10px;text-align:center;">
+          <img src="images/brandons-family.jpg" alt="Brandon's Family" class="gallery-img" />
+          <figcaption class="muted" style="margin-top:6px;">Brandon’s Family — Mother’s Day Celebration</figcaption>
         </figure>
-        <figure class="card">
-          <img src="Brendon wife and Kids.jpg" alt="Brendon's wife and kids during celebration" class="gallery-img"/>
-          <figcaption class="muted">Murunwa Mashamba (Wife) with children</figcaption>
+
+        <figure class="card" style="padding:10px;text-align:center;">
+          <img src="images/brendan-prophet-dion.jpg" alt="Brendan and Prophet Dion" class="gallery-img" />
+          <figcaption class="muted" style="margin-top:6px;">Brendan with Prophet Dion</figcaption>
         </figure>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- Lightbox -->
-  <div id="lightbox">
-    <span id="close">&times;</span>
-    <span id="prev">&#10094;</span>
-    <div class="lightbox-content">
-      <img id="lightbox-img" src="" alt="Expanded view">
-      <p id="lightbox-caption"></p>
+  <section id="visit" class="container" style="margin-top:30px;">
+    <div class="card">
+      <h3>Plan a Visit</h3>
+      <p>Join us this Sunday for worship and fellowship. Everyone is welcome at the Congregational Church of Nations.</p>
     </div>
-    <span id="next">&#10095;</span>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Congregational Church of Nations. All Rights Reserved.</p>
+  </footer>
+
+  <div id="lightbox">
+    <img src="" alt="Expanded View">
   </div>
 
-<script>
-  const lightbox=document.getElementById('lightbox');
-  const lightboxImg=document.getElementById('lightbox-img');
-  const lightboxCaption=document.getElementById('lightbox-caption');
-  const closeBtn=document.getElementById('close');
-  const prevBtn=document.getElementById('prev');
-  const nextBtn=document.getElementById('next');
+  <script>
+    const images = document.querySelectorAll('.gallery-img');
+    const lightbox = document.getElementById('lightbox');
+    const lightboxImg = lightbox.querySelector('img');
+    let currentIndex = 0;
 
-  let images=[]; let captions=[]; let currentIndex=0;
+    images.forEach((img, index) => {
+      img.addEventListener('click', () => {
+        lightbox.style.display = 'flex';
+        lightboxImg.src = img.src;
+        currentIndex = index;
+      });
+    });
 
-  document.querySelectorAll('.gallery-img').forEach((img,index)=>{
-    images.push(img);
-    const caption=img.closest('figure').querySelector('figcaption')?.innerText||"";
-    captions.push(caption);
-    img.addEventListener('click',()=>{currentIndex=index;showImage();lightbox.style.display='flex'});
-  });
+    lightbox.addEventListener('click', e => {
+      if (e.target !== lightboxImg) lightbox.style.display = 'none';
+    });
 
-  function showImage(){lightboxImg.src=images[currentIndex].src;lightboxCaption.textContent=captions[currentIndex];}
-
-  prevBtn.addEventListener('click',()=>{currentIndex=(currentIndex-1+images.length)%images.length;showImage()});
-  nextBtn.addEventListener('click',()=>{currentIndex=(currentIndex+1)%images.length;showImage()});
-  closeBtn.addEventListener('click',()=>lightbox.style.display='none');
-  lightbox.addEventListener('click',(e)=>{if(e.target===lightbox)lightbox.style.display='none'});
-
-  document.addEventListener('keydown',(e)=>{
-    if(lightbox.style.display==='flex'){
-      if(e.key==='ArrowRight')nextBtn.click();
-      if(e.key==='ArrowLeft')prevBtn.click();
-      if(e.key==='Escape')closeBtn.click();
-    }
-  });
-
-  // Swipe support
-  let startX=0,endX=0;
-  lightbox.addEventListener('touchstart',(e)=>{startX=e.changedTouches[0].screenX;});
-  lightbox.addEventListener('touchend',(e)=>{endX=e.changedTouches[0].screenX;handleSwipe();});
-  function handleSwipe(){
-    const dist=endX-startX;
-    if(Math.abs(dist)>50){
-      if(dist<0){nextBtn.click();}else{prevBtn.click();}
-    }
-  }
-</script>
+    document.addEventListener('keydown', e => {
+      if (lightbox.style.display === 'flex') {
+        if (e.key === 'Escape') lightbox.style.display = 'none';
+        if (e.key === 'ArrowRight') {
+          currentIndex = (currentIndex + 1) % images.length;
+          lightboxImg.src = images[currentIndex].src;
+        }
+        if (e.key === 'ArrowLeft') {
+          currentIndex = (currentIndex - 1 + images.length) % images.length;
+          lightboxImg.src = images[currentIndex].src;
+        }
+      }
+    });
+  </script>
 </body>
 </html>
